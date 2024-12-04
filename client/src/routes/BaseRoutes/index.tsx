@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import { TaskPage } from "../../pages/TaskPage";
+import { TaskListPage } from "@/pages/TaskListPage";
 
 export function BaseRoutes() {
     return (
       <>
         <Routes>
-          <Route path="/tasks" element={<TaskPage />} />
-          {/* <Route path="/tasklist" element={} /> */}
-  
+          <Route path="/task" element={<TaskPage />} />
+          <Route path="/" element={<TaskListPage/>} />
         </Routes>
       </>
     );
