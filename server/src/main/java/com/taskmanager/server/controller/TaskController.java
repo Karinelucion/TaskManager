@@ -1,21 +1,19 @@
 package com.taskmanager.server.controller;
 
 import com.taskmanager.server.dto.TaskDto;
+import com.taskmanager.server.model.Status;
 import com.taskmanager.server.model.Task;
 import com.taskmanager.server.service.CrudService;
 import com.taskmanager.server.service.TaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -41,5 +39,12 @@ public class TaskController extends CrudController<Task, TaskDto, Long> {
     @Override
     protected ModelMapper getModelMapper() {
         return this.modelMapper;
+    }
+
+    @GetMapping("status")
+    public List<Map<String, String>> getStatus() {
+        return Arrays.stream(Status.values())
+                .map(status -> Map.of("chave", status.getChave(), "descricao", status.getDescricao()))
+                .collect(Collectors.toList());
     }
 }

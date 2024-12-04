@@ -1,8 +1,6 @@
 package com.taskmanager.server.dto;
 
 import com.taskmanager.server.model.Status;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

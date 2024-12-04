@@ -1,0 +1,17 @@
+server:
+  port: 8025
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskManager
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none
