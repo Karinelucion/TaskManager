@@ -1,4 +1,4 @@
-package com.taskmanager.server.service;
+package com.taskmanager.server.service.impl;
 
 import com.taskmanager.server.dto.TaskDto;
 import com.taskmanager.server.model.Task;
@@ -12,13 +12,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class TaskService {
+public class TaskServiceImpl {
     @Autowired
     private TaskRepository taskRepository;
 
     private final ModelMapper modelMapper;
 
-    public TaskService(TaskRepository pessoaRepository, ModelMapper modelMapper) {
+    public TaskServiceImpl(TaskRepository pessoaRepository, ModelMapper modelMapper) {
         this.taskRepository = pessoaRepository;
         this.modelMapper = modelMapper;
     }

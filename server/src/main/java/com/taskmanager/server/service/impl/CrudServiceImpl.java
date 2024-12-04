@@ -1,6 +1,6 @@
-package com.taskmanager.server.service;
+package com.taskmanager.server.service.impl;
 
-import br.edu.utfpr.pb.pw26s.server.service.CrudService;
+import com.taskmanager.server.service.CrudService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class CrudServiceImpl
         <T, ID extends Serializable>
-         implements CrudServiceImpl<T, ID> {
+         implements CrudService<T, ID> {
 
     protected abstract JpaRepository<T, ID>  getRepository();
 
