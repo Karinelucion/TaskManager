@@ -1,13 +1,7 @@
+import { BaseRoutes } from "@/routes/BaseRoutes";
 
-import './App.scss'
-import { TaskListPage } from './pages/TaskListPage'
-
-function App() {
+export function App() {
   return (
-    <>
-      <TaskListPage></TaskListPage>
-    </>
-  )
+      <BaseRoutes />
+  );
 }
-
-export default App

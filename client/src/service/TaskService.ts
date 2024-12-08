@@ -1,7 +1,7 @@
 import { ITask } from "@/commons/interfaces";
 import { api } from "@/lib/axios";
 
-const taskURL = "/task";
+const taskURL = "/tasks";
 
 const save = async (task: ITask): Promise<any> => {
   let response;
@@ -43,12 +43,23 @@ const findById = async (id: number): Promise<any> => {
   return response;
 };
 
+const findByStatus = async (status: string): Promise<any> => {
+  let response;
+  try {
+    response = await api.get(`${taskURL}/bystatus/${status}`);
+  } catch (err: any) {
+    response = err.response;
+  }
+  return response;
+};
+
 
 const TaskService = {
   save,
   findAll,
   remove,
   findById,
+  findByStatus
 };
 
 export default TaskService;

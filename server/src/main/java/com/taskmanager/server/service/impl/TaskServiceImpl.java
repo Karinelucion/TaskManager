@@ -1,49 +1,32 @@
 package com.taskmanager.server.service.impl;
 
-import com.taskmanager.server.dto.TaskDto;
+import com.taskmanager.server.model.Status;
 import com.taskmanager.server.model.Task;
 import com.taskmanager.server.repository.TaskRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.taskmanager.server.service.ITaskService;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.stream.Collectors;
+
 
 @Service
-public class TaskServiceImpl {
-    @Autowired
-    private TaskRepository taskRepository;
+public class TaskServiceImpl extends CrudServiceImpl<Task, Long>
+        implements ITaskService {
+    private final TaskRepository taskRepository;
 
-    private final ModelMapper modelMapper;
-
-    public TaskServiceImpl(TaskRepository pessoaRepository, ModelMapper modelMapper) {
-        this.taskRepository = pessoaRepository;
-        this.modelMapper = modelMapper;
+    public TaskServiceImpl(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
     }
 
-    private TaskDto convertToDto(Task task) {
-        return modelMapper.map(task, TaskDto.class);
+    @Override
+    protected JpaRepository<Task, Long> getRepository() {
+        return taskRepository;
     }
 
-    private Task convertToEntity(TaskDto taskDto) {
-        return modelMapper.map(taskDto, Task.class);
-    }
-
-    public List<Task> findAll() {
-        return taskRepository.findAll();
-    }
-
-    public Optional<Task> findById(UUID id) {
-        return taskRepository.findById(id);
-    }
-
-    public Task save(Task task) {
-        return taskRepository.save(task);
-    }
-
-    public void deleteById(UUID id) {
-        taskRepository.deleteById(id);
+    public List<Task> findByStatus (String status){
+        Status enumStatus = Status.valueOf(status);
+        return taskRepository.findByStatus(enumStatus);
     }
 }

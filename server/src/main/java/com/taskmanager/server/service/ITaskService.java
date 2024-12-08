@@ -5,6 +5,6 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 
-public interface TaskService extends CrudService<Task, Long> {
-    List<Task> findAll(Specification specification);
+public interface ITaskService extends ICrudService<Task, Long> {
+    List<Task> findByStatus (String status);
 }

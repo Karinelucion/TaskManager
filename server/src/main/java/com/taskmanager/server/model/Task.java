@@ -12,16 +12,14 @@ import java.util.Date;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
-    @NotNull
     private String description;
 
     @NotNull
     private String title;
 
-    @NotNull
-    private Date date;
+    private String date;
 
     @NotNull
     @Enumerated(EnumType.STRING)

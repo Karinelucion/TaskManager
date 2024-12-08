@@ -13,13 +13,13 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskDto {
-    private int id;
+    private Long id;
 
     private String description;
 
     private String title;
 
-    private Date date;
+    private String date;
 
     private Status status;
 }

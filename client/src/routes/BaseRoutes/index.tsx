@@ -6,7 +6,8 @@ export function BaseRoutes() {
     return (
       <>
         <Routes>
-          <Route path="/task" element={<TaskPage />} />
+          <Route path="/task/incluir" element={<TaskPage />} />
+          <Route path="/task/:id" element={<TaskPage />} />
           <Route path="/" element={<TaskListPage/>} />
         </Routes>
       </>
