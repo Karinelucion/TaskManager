@@ -6,5 +6,5 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.List;
 
 public interface ITaskService extends ICrudService<Task, Long> {
-    List<Task> findByStatus (String status);
+//    List<Task> findByStatus (String status);
 }

@@ -1,17 +1,12 @@
 package com.taskmanager.server.controller;
 
 import com.taskmanager.server.dto.TaskDto;
-import com.taskmanager.server.dto.TaskListDto;
 import com.taskmanager.server.model.Status;
 import com.taskmanager.server.model.Task;
 import com.taskmanager.server.service.ICrudService;
 import com.taskmanager.server.service.ITaskService;
 import org.modelmapper.ModelMapper;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +18,6 @@ public class TaskController extends CrudController<Task, TaskDto, Long> {
 
     private final ITaskService taskService;
     private final ModelMapper modelMapper;
-
 
     public TaskController(ITaskService taskService, ModelMapper modelMapper) {
         super(Task.class, TaskDto.class);
@@ -48,15 +42,16 @@ public class TaskController extends CrudController<Task, TaskDto, Long> {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("bystatus/{status}")
-    public ResponseEntity<List<Task>> getTasksByStatus(@PathVariable String status) {
-        try {
-            Status enumStatus = Status.valueOf(status);
-            List<Task> tasks = taskService.findByStatus(enumStatus.name());
-            return tasks.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(tasks);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
+////REMOVIDO POIS FOI OPTADO POR FAZER O FILTRO SOMENTE NO FRONT END
+//    @GetMapping("bystatus/{status}")
+//    public ResponseEntity<List<Task>> getTasksByStatus(@PathVariable String status) {
+//        try {
+//            Status enumStatus = Status.valueOf(status);
+//            List<Task> tasks = taskService.findByStatus(enumStatus.name());
+//            return tasks.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(tasks);
+//        } catch (IllegalArgumentException e) {
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
 
 }

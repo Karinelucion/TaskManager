@@ -25,8 +25,8 @@ public class TaskServiceImpl extends CrudServiceImpl<Task, Long>
         return taskRepository;
     }
 
-    public List<Task> findByStatus (String status){
-        Status enumStatus = Status.valueOf(status);
-        return taskRepository.findByStatus(enumStatus);
-    }
+//    public List<Task> findByStatus (String status){
+//        Status enumStatus = Status.valueOf(status);
+//        return taskRepository.findByStatus(enumStatus);
+//    }
 }

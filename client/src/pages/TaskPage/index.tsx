@@ -93,10 +93,10 @@ export function TaskPage() {
   
 
   return (
-    <div className="px-5 pt-5">
+    <div className="px-5 pt-3">
       <ToastContainer />
       <form id="taskForm" onSubmit={handleSubmit(onSubmit)} className="grid">
-        <div className="d-flex justify-content-around">
+        <div className="d-flex justify-content-around align-items-center">
           <div>
             <a className="link-dark" href="/"><GoArrowLeft /></a>
           </div>
@@ -105,7 +105,7 @@ export function TaskPage() {
           </div>
         </div>
         <div className="row">
-          <div className="col-10">
+          <div className="col-12 col-md-10 col-lg-10">
             <label htmlFor="title">Título<span style={{color: '#FF0000'}}>*</span></label>
             <input
               id="title"
@@ -119,7 +119,7 @@ export function TaskPage() {
               <div className="invalid-feedback">{errors.title.message}</div>
             )}
           </div>
-          <div className="col-2">
+          <div className="col-12  col-md-2 col-lg-2">
             <label htmlFor="date">Data de vencimento</label>
             <DatePicker
               id="date"
@@ -148,7 +148,7 @@ export function TaskPage() {
           </div>
         </div>
         <div className="row">
-          <div className="col-4">
+          <div className="col-12 col-md-4 col-lg-4">
             <label htmlFor="status">Status<span style={{color: '#FF0000'}}>*</span></label>
             <select
               id="status"
@@ -169,7 +169,7 @@ export function TaskPage() {
           </div>
         </div>
         <div className="d-flex justify-content-center mt-3">
-          <button type="submit" className="btn btn-success w-25" disabled={pendingApiCall}>
+          <button type="submit" className="btn btn-success " disabled={pendingApiCall}>
           {pendingApiCall ? "Salvando..." : "Salvar"}
           </button>
         </div>

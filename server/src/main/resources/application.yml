@@ -1,15 +1,15 @@
 server:
-  port: 8025
+  port: ${SERVER_PORT}
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/taskManager
-    username: postgres
-    password: root
-    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: ${DB_DRIVER}
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: ${JPA_DIALECT}
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${DDL_AUTO}
     properties:
       javax:
         persistence:
